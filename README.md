@@ -79,7 +79,7 @@ Análise Comparativa e Visualização: Foi realizada uma comparacão do desempen
 |  -0.118437 |   -0.158451 |
 
 
-O gráfico abaixo mostra os retornos cumulativos do estratégia vs o benchmark:
+O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
 
   ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/5d7e808c-59db-4e45-aa12-fa2cf4c352ff)
 
