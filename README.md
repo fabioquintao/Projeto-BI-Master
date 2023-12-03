@@ -2,10 +2,8 @@
 
 # Reiforcement Learning Aplicado a Trading de Bitcoin
 
-#### Aluno: [Fábio Quintão]([https://github.com/fabioquintao).
-#### Orientador(/a/es/as): [Nome Sobrenome](https://github.com/link_do_github).
-#### Co-orientador(/a/es/as): [Nome Sobrenome](https://github.com/link_do_github). <!-- caso não aplicável, remover esta linha -->
-
+#### Aluno: [Fábio Quintão]([https://github.com/fabioquintao)
+#### Orientadora: Evelyn Batista
 ---
 
 Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como pré-requisito para conclusão de curso e obtenção de crédito na disciplina "Projetos de Sistemas Inteligentes de Apoio à Decisão".
@@ -14,39 +12,93 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 ### Resumo
 
-Este projeto final de curso apresenta uma aplicação do Aprendizado por Reforço (Reinforcement Learning) aplicado à trading de criptomoeda. O Aprendizado por Reforço é uma área de estudo no campo de machine learning, onde um agente aprende a tomar decisões otimizadas através de interações com um ambiente. Neste paradigma, o agente executa ações e recebe recompensas ou penalidades com base nos resultados dessas ações. O objetivo do agente é maximizar a soma das recompensas ao longo do tempo.
+Este projeto apresenta uma aplicação do Aprendizado por Reforço (Reinforcement Learning) aplicado a trading de criptomoeda. O Aprendizado por Reforço é uma área de estudo no campo de Machine Learning, onde um agente aprende a tomar decisões otimizadas através de interações com um ambiente. Neste paradigma, o agente executa ações e recebe recompensas ou penalidades com base nos resultados dessas ações. O objetivo do agente é maximizar a soma das recompensas ao longo do tempo.
+Este projeto foca na aplicação de RL, especificamente utilizando o algoritmo Proximal Policy Optimization (PPO), para desenvolver estratégias de trading. O PPO, implementado através da biblioteca Stable Baselines, foi escolhido por sua eficácia em ambientes de alta incerteza e complexidade, como é o caso dos mercados financeiros.
+Por que é chamado de Proximal?: O termo "Proximal" refere-se à abordagem do algoritmo em manter as novas políticas de decisão próximas às políticas antigas durante o processo de aprendizado. Isso ajuda a evitar mudanças drásticas que podem ser prejudiciais e garante um aprendizado mais estável. O PPO opera com base em políticas de decisão, que são mapeamentos de estados percebidos do ambiente para ações a serem tomadas. Estas políticas são frequentemente estocásticas, o que significa que, para um dado estado, o algoritmo produz uma distribuição de probabilidade sobre as ações possíveis, em vez de uma única ação determinística. 
 
-Este projeto foca na aplicação de RL, especificamente utilizando o algoritmo Proximal Policy Optimization (PPO), para desenvolver estratégias de trading de ações. O PPO, implementado através da biblioteca Stable Baselines, é escolhido por sua eficácia em ambientes de alta incerteza e complexidade, como é o caso dos mercados financeiros.
+No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente incerto e volátil. O PPO, ao lidar com este ambiente, aprende uma política que não apenas escolhe a melhor ação com base no estado atual do mercado, mas também considera a incerteza inerente. Isso significa que, mesmo em condições de mercado semelhantes, as ações tomadas pelo agente podem variar, refletindo a natureza estocástica da política aprendida. Em ambientes de trading, onde as condições podem mudar rapidamente, a capacidade de variar ações aumenta a adaptação e potencialmente melhora o desempenho.
+
+Exploração e Explotação: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
 
 As principais etapas do projeto são:
 
-Preparação dos Dados: Seleção e processamento de dados financeiros para criar um ambiente de treinamento realista para o agente de RL.
+Preparação dos Dados: Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia, volume de negociações, entre outros.
+   
+Estratégia de Trading Personalizada: Foi definida uma estratégia de trading chamada "Momentum and Volatility", que inclui uma série de indicadores técnicos. Estes indicadores são usados para analisar o mercado e tomar decisões informadas de trading.
 
-Configuração do Ambiente de Trading: Desenvolvimento de um ambiente simulado que reflete o mercado de trading, permitindo ao agente aprender a interagir e desenvolver estratégias.
+Indicadores Técnicos Utilizados:
 
-Implementação do PPO: O PPO é utilizado por sua abordagem de atualização de política em pequenos passos, garantindo aprendizado estável e decisões consistentes, fundamentais no trading de ações.
+Médias Móveis Simples (SMA) de 50 e 200 dias: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
 
-Treinamento e Avaliação do Agente: O agente é treinado com dados históricos e avaliado por métricas de trading e backtesting, assegurando a validação da estratégia desenvolvida.
+Bandas de Bollinger (BBANDS) com um período de 20: Este indicador é usado para medir a volatilidade do mercado e identificar overbought (sobrecomprado) ou oversold (sobrevendido) condições.
 
-Análise Comparativa e Visualização: Comparação entre a estratégia baseada em PPO e benchmarks tradicionais, com visualizações para destacar desempenho e características únicas da estratégia.
+Índice de Força Relativa (RSI): Um indicador de momentum que mede a velocidade e a mudança dos movimentos de preço. O RSI é comumente usado para identificar condições de sobrecompra ou sobrevenda no mercado.
 
-Este trabalho evidencia a aplicabilidade do RL, particularmente o PPO, no desenvolvimento de estratégias para o trading de criptomoead, contribuindo com perspectivas na interseção entre machine learning e finanças.
+Convergência e Divergência de Médias Móveis (MACD): Este indicador ajuda a identificar mudanças de tendência no mercado através da comparação entre duas médias móveis de diferentes períodos.
 
-### Abstract 
-This final project presents an application of Reinforcement Learning (RL) applied to cryptocurrency trading. Reinforcement Learning is an area of study in the field of machine learning, where an agent learns to make optimized decisions through interactions with an environment. In this paradigm, the agent performs actions and receives rewards or penalties based on the outcomes of these actions. The agent's goal is to maximize the sum of rewards over time.
+Média Móvel Simples de Volume (Volume SMA) de 20 dias: Fornece insights sobre o volume de negociação, que é um importante indicador da força de uma tendência.
+A combinação destes indicadores técnicos permite ao modelo aprender a identificar padrões e a tomar decisões de trading mais informadas e baseadas em dados.
 
-This project focuses on the application of RL, specifically using the Proximal Policy Optimization (PPO) algorithm, to develop cryptocurrency trading strategies. PPO, implemented through the Stable Baselines library, is chosen for its effectiveness in environments of high uncertainty and complexity, such as financial markets.
+Configuração do Ambiente de Trading: Foi criado um ambiente simulado baseado na biblioteca gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
+   
+O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark.
+ 
+Treinamento e Avaliação do Agente: O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida.Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
+   
+Métricas de Backtesting: 
 
-The main stages of the project are:
+•	Análise de Retorno Total: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
-Data Preparation: Selection and processing of financial data to create a realistic training environment for the RL agent.
+•	Drawdown Máximo: Mede a maior queda da estratégia, fornecendo uma indicação do risco de perdas significativas.
 
-Trading Environment Configuration: Development of a simulated environment that reflects the trading market, allowing the agent to learn to interact and develop strategies.
+•	Sharpe Ratio: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
 
-PPO Implementation: PPO is used for its approach of policy update in small steps, ensuring stable learning and consistent decisions, fundamental in stock trading.
+•	Uso de Simulações em Dados de Validação: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
 
-Training and Evaluation of the Agent: The agent is trained with historical data and evaluated by trading metrics and backtesting, ensuring the validation of the developed strategy.
+•	Realização de 1000 Simulações: Dada a natureza estocástica do algoritmo PPO, são realizadas 1000 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
 
-Comparative Analysis and Visualization: Comparison between the PPO-based strategy and traditional benchmarks, with visualizations to highlight performance and unique characteristics of the strategy.
+•	Cálculo da Média das Métricas: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
 
-This work demonstrates the applicability of RL, particularly PPO, in developing strategies for cryptocurrency trading, contributing perspectives at the intersection of machine learning and finance.
+•	Avaliação da Generalização da Estratégia: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
+
+Análise Comparativa e Visualização: Foi realizada uma comparacão do desempenho da estratégia contra um benchmark de mercado.  Utilizando a função backtest_strategy_ensemble, a estratégia de trading é testada utilizando a média dos resultados de 1000 simulações. 
+
+•	Cálculo dos Retornos Cumulativos: A função calcula os retornos cumulativos da estratégia e do benchmark.
+
+•	Visualização Gráfica: As séries de retornos cumulativos tanto da estratégia quanto do benchmark são plotadas em um gráfico. Esta visualização fornece uma comparação entre performance da estratégia de trading e o benchmark ao longo do tempo.
+
+•	Análise de Desempenho: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns em relação ao benchmark pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
+
+ A tabela abaixo mostra os resultados da estratágia vs o benchmark:
+
+         
+|   Strategy |   Benchmark |
+|-----------:|------------:|
+| -11.894    |  -18.3247   |          
+|  80.5798   |  110.08     |
+|  -0.118437 |   -0.158451 |
+
+
+O gráfico abaixo mostra os retornos cumulativos do estratégia vs o benchmark:
+
+  ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/5d7e808c-59db-4e45-aa12-fa2cf4c352ff)
+
+
+Otimização dos Hiperparâmetros
+Integração com Optuna: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
+Hiperparâmetros Selecionados para Otimização:
+•	Taxa de Aprendizado (learning_rate): Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
+
+•	Número de Passos (n_steps): Define quantos passos de ambiente são coletados antes de fazer uma atualização de política. 
+
+•	Fator de Desconto (gamma): Este parâmetro equilibra a importância das recompensas imediatas versus futuras. 
+
+•	GAE Lambda (gae_lambda): Usado no cálculo do Generalized Advantage Estimator, um método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
+
+Após concluir a otimização, o Optuna fornece a configuração de hiperparâmetros que resultou no melhor desempenho, orientando a escolha final dos parâmetros para o modelo.
+
+|   Strategy |   Benchmark |
+|-----------:|------------:|
+| -18.2189   |  -18.3247   |
+| 110.079    |  110.08     |
+|  -0.157537 |   -0.158451 |
