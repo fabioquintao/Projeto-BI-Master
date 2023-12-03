@@ -1,6 +1,6 @@
 # Projeto-BI-Master
 
-# Reiforcement Learning Aplicado a Trading de Bitcoin
+# Reinforcement Learning Aplicado a Trading de Bitcoin
 
 #### Aluno: [Fábio Quintão]([https://github.com/fabioquintao)
 #### Orientadora: Evelyn Batista
