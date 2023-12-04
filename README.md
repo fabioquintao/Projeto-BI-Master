@@ -120,7 +120,7 @@ O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/52dd66cd-cf00-47c9-8fbb-357ea1734dce)
 
 
-### Otimização dos Hiperparâmetros
+### Otimização dos Hiperparâmetros:
 
 
 **Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
