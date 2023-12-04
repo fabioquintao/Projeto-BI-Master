@@ -45,7 +45,9 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 **As principais etapas do projeto são**:
 
 
-**Preparação dos Dados**: Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia e volume de negociações.
+### Preparação dos Dados:
+
+Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia e volume de negociações.
    
 **Estratégia de Trading Personalizada**: Foi definida uma estratégia de trading chamada "Momentum and Volatility", que inclui uma série de indicadores técnicos. Estes indicadores são usados para analisar o mercado e tomar decisões informadas de trading.
 
@@ -53,15 +55,15 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 **Indicadores Técnicos Utilizados**:
 
 
-**Médias Móveis Simples (SMA) de 50 e 200 dias**: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
+. **Médias Móveis Simples (SMA) de 50 e 200 dias**: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
 
-**Bandas de Bollinger (BBANDS) com um período de 20**: Este indicador é usado para medir a volatilidade do mercado e identificar overbought (sobrecomprado) ou oversold (sobrevendido) condições.
+. **Bandas de Bollinger (BBANDS) com um período de 20**: Este indicador é usado para medir a volatilidade do mercado e identificar overbought (sobrecomprado) ou oversold (sobrevendido) condições.
 
-**Índice de Força Relativa (RSI)**: Um indicador de momentum que mede a velocidade e a mudança dos movimentos de preço. O RSI é comumente usado para identificar condições de sobrecompra ou sobrevenda no mercado.
+. **Índice de Força Relativa (RSI)**: Um indicador de momentum que mede a velocidade e a mudança dos movimentos de preço. O RSI é comumente usado para identificar condições de sobrecompra ou sobrevenda no mercado.
 
-**Convergência e Divergência de Médias Móveis (MACD)**: Este indicador ajuda a identificar mudanças de tendência no mercado através da comparação entre duas médias móveis de diferentes períodos.
+. **Convergência e Divergência de Médias Móveis (MACD)**: Este indicador ajuda a identificar mudanças de tendência no mercado através da comparação entre duas médias móveis de diferentes períodos.
 
-**Média Móvel Simples de Volume (Volume SMA) de 20 dias**: Fornece insights sobre o volume de negociação, que é um importante indicador da força de uma tendência.
+. **Média Móvel Simples de Volume (Volume SMA) de 20 dias**: Fornece insights sobre o volume de negociação, que é um importante indicador da força de uma tendência.
 
 A combinação destes indicadores técnicos permite ao modelo aprender a identificar padrões e a tomar decisões de trading mais informadas e baseadas em dados.
 
