@@ -25,9 +25,9 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 
 ### Componentes Principais do PPO:
 
-Rede de Políticas (Policy Network): Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações.
+**Rede de Políticas (Policy Network)**: Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações.
 
-Rede de Valor (Value Network): Esta rede avalia a qualidade de um estado (ou ação) ao prever a quantidade de recompensa que o agente pode esperar receber a partir daquele estado. Paralelamente à política, o algoritmo treina uma função de valor usando erro médio quadrátco para estimar os retornos futuros.
+**Rede de Valor (Value Network)**: Esta rede avalia a qualidade de um estado (ou ação) ao prever a quantidade de recompensa que o agente pode esperar receber a partir daquele estado. Paralelamente à política, o algoritmo treina uma função de valor usando erro médio quadrátco para estimar os retornos futuros.
 
 **Aprendizado Iterativo**: O PPO funciona através de iterações. Em cada iteração, o agente interage com o ambiente, coletando dados sobre suas experiências.
 
