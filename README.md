@@ -67,7 +67,7 @@ A combinação destes indicadores técnicos permite ao modelo aprender a identif
 
 **Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca Gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
    
-O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark.
+O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. *O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark*.
 
  
 ### Treinamento e Avaliação do Agente:
