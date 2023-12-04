@@ -79,19 +79,19 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
    
 **Métricas de Backtesting**: 
 
-•	**Análise de Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
+- **Análise de Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
-•	**Drawdown Máximo**: Mede a a maior queda percentual entre um pico e um vale subsequente no período, fornecendo uma indicação do risco de perdas significativas.
+- **Drawdown Máximo**: Mede a a maior queda percentual entre um pico e um vale subsequente no período, fornecendo uma indicação do risco de perdas significativas.
 
-•	**Sharpe Ratio**: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
+- **Sharpe Ratio**: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
 
-•	**Uso de Simulações em Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
+- **Uso de Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
 
-•	**Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 100 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
+- **Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 100 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
 
-•	**Cálculo da Média das Métricas**: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
+- **Cálculo da Média das Métricas**: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
 
-•	**Avaliação da Generalização da Estratégia**: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
+- **Avaliação da Generalização da Estratégia**: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
 
 
 ### Análise dos Resultados:
@@ -99,11 +99,11 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 
 Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a *função backtest_strategy_ensemble*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
 
-•	**Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
+- **Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
-•	**Visualização Gráfica**: As séries de retornos cumulativos tanto da estratégia quanto do benchmark são plotadas em um gráfico. Esta visualização fornece uma comparação entre performance da estratégia de trading e o benchmark ao longo do tempo.
+- **Visualização Gráfica**: As séries de retornos cumulativos tanto da estratégia quanto do benchmark são plotadas em um gráfico. Esta visualização fornece uma comparação entre performance da estratégia de trading e o benchmark ao longo do tempo.
 
-•	**Análise de Desempenho**: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns em relação ao benchmark pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
+- **Análise de Desempenho**: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns em relação ao benchmark pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
 
  A tabela abaixo mostra os resultados da estratágia vs o benchmark:
 
@@ -126,11 +126,11 @@ O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
 **Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
 Hiperparâmetros Selecionados para Otimização:
 
-•	**Taxa de Aprendizado (learning_rate)**: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
+- **Taxa de Aprendizado (learning_rate)**: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
 
-•	**Fator de Desconto (gamma)**: Equilibra a importância das recompensas imediatas versus futuras. 
+- **Fator de Desconto (gamma)**: Equilibra a importância das recompensas imediatas versus futuras. 
 
-•	**GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
+- **GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
 
 
 Após concluir a otimização, o Optuna fornece a melhor configuração de hiperparâmetros. Os dados abaixo mostram o desempenho da estratégia otimizada:
