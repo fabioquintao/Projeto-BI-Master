@@ -21,7 +21,7 @@ O termo "Proximal" refere-se à abordagem do algoritmo em manter as novas polít
 
 No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente incerto e volátil. O PPO, ao lidar com este ambiente, aprende uma política que não apenas escolhe a melhor ação com base no estado atual do mercado, mas também considera a incerteza inerente. Isso significa que, mesmo em condições de mercado semelhantes, as ações tomadas pelo agente podem variar, refletindo a natureza estocástica da política aprendida. Em ambientes de trading, onde as condições podem mudar rapidamente, a capacidade de variar ações aumenta a adaptação e potencialmente melhora o desempenho.
 
-Exploração e Explotação: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
+*Exploração e Explotação*: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
 
 Tecnicamente, o PPO realiza atualizações de política de uma maneira que equilibra eficientemente a exploração e a explotação, evitando grandes desvios que podem resultar em desempenho instável. Isso é alcançado através de várias características-chave:
 
@@ -33,24 +33,24 @@ Tecnicamente, o PPO realiza atualizações de política de uma maneira que equil
 
 ### As principais etapas do projeto são:
 
-*Preparação dos Dados*: Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia, volume de negociações, entre outros.
+**Preparação dos Dados**: Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia e volume de negociações.
    
-*Estratégia de Trading Personalizada*: Foi definida uma estratégia de trading chamada "Momentum and Volatility", que inclui uma série de indicadores técnicos. Estes indicadores são usados para analisar o mercado e tomar decisões informadas de trading.
+**Estratégia de Trading Personalizada**: Foi definida uma estratégia de trading chamada "Momentum and Volatility", que inclui uma série de indicadores técnicos. Estes indicadores são usados para analisar o mercado e tomar decisões informadas de trading.
 
 ***Indicadores Técnicos Utilizados***:
 
-*Médias Móveis Simples (SMA) de 50 e 200 dias*: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
+**Médias Móveis Simples (SMA) de 50 e 200 dias**: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
 
-*Bandas de Bollinger (BBANDS) com um período de 20*: Este indicador é usado para medir a volatilidade do mercado e identificar overbought (sobrecomprado) ou oversold (sobrevendido) condições.
+**Bandas de Bollinger (BBANDS) com um período de 20**: Este indicador é usado para medir a volatilidade do mercado e identificar overbought (sobrecomprado) ou oversold (sobrevendido) condições.
 
-*Índice de Força Relativa (RSI)*: Um indicador de momentum que mede a velocidade e a mudança dos movimentos de preço. O RSI é comumente usado para identificar condições de sobrecompra ou sobrevenda no mercado.
+**Índice de Força Relativa (RSI)**: Um indicador de momentum que mede a velocidade e a mudança dos movimentos de preço. O RSI é comumente usado para identificar condições de sobrecompra ou sobrevenda no mercado.
 
-*Convergência e Divergência de Médias Móveis (MACD)*: Este indicador ajuda a identificar mudanças de tendência no mercado através da comparação entre duas médias móveis de diferentes períodos.
+**Convergência e Divergência de Médias Móveis (MACD)**: Este indicador ajuda a identificar mudanças de tendência no mercado através da comparação entre duas médias móveis de diferentes períodos.
 
-*Média Móvel Simples de Volume (Volume SMA) de 20 dias*: Fornece insights sobre o volume de negociação, que é um importante indicador da força de uma tendência.
+**Média Móvel Simples de Volume (Volume SMA) de 20 dias**: Fornece insights sobre o volume de negociação, que é um importante indicador da força de uma tendência.
 A combinação destes indicadores técnicos permite ao modelo aprender a identificar padrões e a tomar decisões de trading mais informadas e baseadas em dados.
 
-*Configuração do Ambiente de Trading*: Foi criado um ambiente simulado baseado na biblioteca gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
+**Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
    
 O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark.
  
@@ -58,72 +58,63 @@ Treinamento e Avaliação do Agente: O agente é treinado com base nos dados his
    
 ### Métricas de Backtesting: 
 
-•	*Análise de Retorno Total*: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
+•	**Análise de Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
-•	*Drawdown Máximo*: Mede a maior queda da estratégia, fornecendo uma indicação do risco de perdas significativas.
+•	**Drawdown Máximo**: Mede a maior queda da estratégia, fornecendo uma indicação do risco de perdas significativas.
 
-•	*Sharpe Ratio*: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
+•	**Sharpe Ratio**: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
 
-•	Uso de Simulações em Dados de Validação: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
+•	**Uso de Simulações em Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
 
-•	Realização de 1000 Simulações: Dada a natureza estocástica do algoritmo PPO, são realizadas 1000 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
+•	**Realização de 1000 Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 1000 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
 
-•	Cálculo da Média das Métricas: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
+•	**Cálculo da Média das Métricas**: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
 
-•	Avaliação da Generalização da Estratégia: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
+•	**Avaliação da Generalização da Estratégia**: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
 
-### Análise Comparativa e Visualização:
+### Análise dos Resultados:
 
 Foi realizada uma comparacão do desempenho da estratégia contra um benchmark de mercado.  Utilizando a função backtest_strategy_ensemble, a estratégia de trading é testada utilizando a média dos resultados de 1000 simulações. 
 
-•	Cálculo dos Retornos Cumulativos: A função calcula os retornos cumulativos da estratégia e do benchmark.
+•	**Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
-•	Visualização Gráfica: As séries de retornos cumulativos tanto da estratégia quanto do benchmark são plotadas em um gráfico. Esta visualização fornece uma comparação entre performance da estratégia de trading e o benchmark ao longo do tempo.
+•	**Visualização Gráfica**: As séries de retornos cumulativos tanto da estratégia quanto do benchmark são plotadas em um gráfico. Esta visualização fornece uma comparação entre performance da estratégia de trading e o benchmark ao longo do tempo.
 
-•	Análise de Desempenho: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns em relação ao benchmark pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
+•	**Análise de Desempenho**: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns em relação ao benchmark pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
 
  A tabela abaixo mostra os resultados da estratágia vs o benchmark:
 
          
 |                         |   Strategy |   Benchmark |
 |:------------------------|-----------:|------------:|
-| Total Return (%)        |   -11.894  |    -18.3247 |
-| Max Drawdown (%)        |    80.5798 |    110.08   |
-| Annualized Sharpe Ratio |    -0.1184 |     -0.1585 |
+| Total Return (%)        |   -13.7556 |    -18.3247 |
+| Max Drawdown (%)        |    89.9388 |    110.08   |
+| Annualized Sharpe Ratio |    -0.128  |     -0.1585 |
 
 
 O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
 
-  ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/5d7e808c-59db-4e45-aa12-fa2cf4c352ff)
+![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/52dd66cd-cf00-47c9-8fbb-357ea1734dce)
 
-
-Otimização dos Hiperparâmetros
+### Otimização dos Hiperparâmetros
 Integração com Optuna: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
 Hiperparâmetros Selecionados para Otimização:
 
-•	*Taxa de Aprendizado (learning_rate)*: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
+•	**Taxa de Aprendizado (learning_rate)**: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
 
-•	*Fator de Desconto (gamma)*: Este parâmetro equilibra a importância das recompensas imediatas versus futuras. 
+•	**Fator de Desconto (gamma)**: Este parâmetro equilibra a importância das recompensas imediatas versus futuras. 
 
-•	*GAE Lambda (gae_lambda)*: Usado no cálculo do Generalized Advantage Estimator, um método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
+•	**GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, um método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
 
-Após concluir a otimização, o Optuna fornece a configuração de hiperparâmetros que resultou no melhor desempenho, orientando a escolha final dos parâmetros para o modelo.
+Após concluir a otimização, o Optuna fornece a configuração de hiperparâmetros que resultou no melhor desempenho, orientando a escolha final dos parâmetros para o modelo. Os dados abaixo mostram o desempenho da estratégia otimizada:
 
 |                         |   Strategy |   Benchmark |
 |:------------------------|-----------:|------------:|
-| Total Return (%)        |  -18.2189  |  -18.3247   |
-| Max Drawdown (%)        |  110.079   |   110.08    |
-| Annualized Sharpe Ratio |  -0.1575   |   -0.1585   |
+| Total Return (%)        |    -6.0763 |    -18.3247 |
+| Max Drawdown (%)        |    65.023  |    110.08   |
+| Annualized Sharpe Ratio |    -0.0759 |     -0.1585 |
 
-### Os resultados obtidos após a otimização podem ser devido a fatores como:
 
-1. **Equilíbrio entre Exploração e Explotação**: A otimização de hiperparâmetros pode ter levado a um equilíbrio diferente entre exploração  e explotação. Isso pode resultar em um modelo que é menos propenso a assumir riscos ou a explorar novas estratégias que poderiam ter gerado retornos mais altos.
+![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/c4cd2d07-1953-487f-90df-d16587ecd23c)
 
-2. **Sobreajuste aos Dados de Treinamento (Overfitting)**: Uma possibilidade é que o modelo otimizado tenha se ajustado demais aos dados de treinamento. Isso significa que ele pode ter se tornado muito bom em prever as condições específicas dos dados de treinamento, mas menos eficaz em generalizar para novos dados ou condições de mercado.
-
-3. **Complexidade do Modelo vs. Ruído do Mercado**: Em mercados financeiros, especialmente em criptomoedas, há um alto grau de ruído e imprevisibilidade. Um modelo mais complexo ou "ajustado" nem sempre é sinônimo de melhor desempenho, especialmente se o mercado em si é altamente volátil e impulsionado por fatores externos que não podem ser capturados por indicadores técnicos.
-
-4. **Natureza Estocástica do Algoritmo PPO**: O algoritmo PPO é estocástico por natureza, o que significa que pode haver uma variação inerente nos resultados de cada simulação. A otimização pode ter levado a um conjunto de hiperparâmetros que, embora teoricamente ideal, na prática não produz consistentemente melhores resultados devido à variabilidade do mercado.
-
-5. **Limitações dos Indicadores Técnicos**: Os indicadores técnicos usados podem não capturar completamente a complexidade e os fatores subjacentes que afetam os preços das criptomoedas. Assim, a estratégia baseada nesses indicadores, mesmo otimizada, pode ter limitações inerentes.
 
