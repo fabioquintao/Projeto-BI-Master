@@ -74,12 +74,11 @@ O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta e
  
 ### Treinamento e Avaliação do Agente:
 
-
 O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida. Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
    
 **Métricas de Backtesting**: 
 
-- **Análise de Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
+- **Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
 - **Drawdown Máximo**: Mede a a maior queda percentual entre um pico e um vale subsequente no período, fornecendo uma indicação do risco de perdas significativas.
 
@@ -101,11 +100,11 @@ Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. U
 
 - **Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
-- **Visualização Gráfica**: As séries de retornos cumulativos tanto da estratégia quanto do benchmark são plotadas em um gráfico. Esta visualização fornece uma comparação entre performance da estratégia de trading e o benchmark ao longo do tempo.
+- **Visualização Gráfica**: As séries de retornos cumulativos são plotadas em um gráfico. Esta visualização fornece uma comparação de performance ao longo do tempo.
 
-- **Análise de Desempenho**: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns em relação ao benchmark pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
+- **Análise de Desempenho**: Através da visualização, é possível analisar não apenas o retorno total, mas também a volatilidade e a estabilidade da estratégia em comparação com o benchmark. Por exemplo, uma estratégia que exibe menos volatilidade e menores drawdowns pode ser considerada mais favorável, mesmo que o retorno total seja semelhante.
 
- A tabela abaixo mostra os resultados da estratágia vs o benchmark:
+ A tabela abaixo mostra os resultados:
 
          
 |                         |   Strategy |   Benchmark |
@@ -115,15 +114,15 @@ Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. U
 | Annualized Sharpe Ratio |    -0.128  |     -0.1585 |
 
 
-O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
+O gráfico abaixo mostra os retornos cumulativos:
 
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/52dd66cd-cf00-47c9-8fbb-357ea1734dce)
 
 
 ### Otimização dos Hiperparâmetros:
 
+**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho.
 
-**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
 Hiperparâmetros Selecionados para Otimização:
 
 - **Taxa de Aprendizado (learning_rate)**: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
