@@ -73,7 +73,7 @@ O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta e
 ### Treinamento e Avaliação do Agente:
 
 
-O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida.Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
+O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida. Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
    
 **Métricas de Backtesting**: 
 
@@ -95,7 +95,7 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 ### Análise dos Resultados:
 
 
-Foi realizada uma comparacão do desempenho da estratégia contra um benchmark de mercado.  Utilizando a função backtest_strategy_ensemble, a estratégia de trading é testada utilizando a média dos resultados de 1000 simulações. 
+Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a *função backtest_strategy_ensemble*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
 
 •	**Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
@@ -126,12 +126,12 @@ Hiperparâmetros Selecionados para Otimização:
 
 •	**Taxa de Aprendizado (learning_rate)**: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
 
-•	**Fator de Desconto (gamma)**: Este parâmetro equilibra a importância das recompensas imediatas versus futuras. 
+•	**Fator de Desconto (gamma)**: Equilibra a importância das recompensas imediatas versus futuras. 
 
-•	**GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, um método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
+•	**GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
 
 
-Após concluir a otimização, o Optuna fornece a configuração de hiperparâmetros que resultou no melhor desempenho, orientando a escolha final dos parâmetros para o modelo. Os dados abaixo mostram o desempenho da estratégia otimizada:
+Após concluir a otimização, o Optuna fornece a melhor configuração de hiperparâmetros. Os dados abaixo mostram o desempenho da estratégia otimizada:
 
 
 |                         |   Strategy |   Benchmark |
