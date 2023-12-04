@@ -15,7 +15,9 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 Este projeto apresenta uma aplicação do Aprendizado por Reforço (Reinforcement Learning) aplicado a trading de criptomoeda. O Aprendizado por Reforço é uma área de estudo no campo de Machine Learning, onde um agente aprende a tomar decisões otimizadas através de interações com um ambiente. Neste paradigma, o agente executa ações e recebe recompensas ou penalidades com base nos resultados dessas ações. O objetivo do agente é maximizar a soma das recompensas ao longo do tempo.
 Este projeto foca na aplicação de RL, especificamente utilizando o algoritmo Proximal Policy Optimization (PPO), para desenvolver estratégias de trading. O PPO, implementado através da biblioteca Stable Baselines, foi escolhido por sua eficácia em ambientes de alta incerteza e complexidade, como é o caso dos mercados financeiros.
 
+
 ###  Proximal Policy Optimization (PPO)
+
 
 O termo "Proximal" refere-se à abordagem do algoritmo em manter as novas políticas de decisão próximas às políticas antigas durante o processo de aprendizado. Isso ajuda a evitar mudanças drásticas que podem ser prejudiciais e garante um aprendizado mais estável. O PPO opera com base em políticas de decisão, que são mapeamentos de estados percebidos do ambiente para ações a serem tomadas. Estas políticas são frequentemente estocásticas, o que significa que, para um dado estado, o algoritmo produz uma distribuição de probabilidade sobre as ações possíveis, em vez de uma única ação determinística. 
 
@@ -23,7 +25,9 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 
 **Exploração e Explotação**: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
 
+
 ### Componentes Principais do PPO:
+
 
 **Rede de Políticas (Policy Network)**: Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações.
 
@@ -37,13 +41,17 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 
 **Estimação de Vantagem Generalizada (GAE)**: O PPO utiliza GAE para calcular a vantagem de uma ação, que ajuda a balancear a variância e o viés nas estimativas de recompensa, onde `δ` é o erro de diferença temporal (TD), `γ` e `λ` são hiperparâmetros. `γ` é o fator de desconto, que determina a importância das recompensas futuras. `λ` é um parâmetro que equilibra a variância e o viés nas estimativas de vantagem. Um valor alto de `λ` pode aumentar a variância mas reduzir o viés, e vice-versa.
 
+
 **As principais etapas do projeto são**:
+
 
 **Preparação dos Dados**: Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia e volume de negociações.
    
 **Estratégia de Trading Personalizada**: Foi definida uma estratégia de trading chamada "Momentum and Volatility", que inclui uma série de indicadores técnicos. Estes indicadores são usados para analisar o mercado e tomar decisões informadas de trading.
 
+
 **Indicadores Técnicos Utilizados**:
+
 
 **Médias Móveis Simples (SMA) de 50 e 200 dias**: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
 
@@ -59,8 +67,10 @@ A combinação destes indicadores técnicos permite ao modelo aprender a identif
 **Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
    
 O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark.
+
  
 ### Treinamento e Avaliação do Agente:
+
 
 O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida.Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
    
@@ -80,7 +90,9 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 
 •	**Avaliação da Generalização da Estratégia**: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
 
+
 ### Análise dos Resultados:
+
 
 Foi realizada uma comparacão do desempenho da estratégia contra um benchmark de mercado.  Utilizando a função backtest_strategy_ensemble, a estratégia de trading é testada utilizando a média dos resultados de 1000 simulações. 
 
@@ -104,7 +116,9 @@ O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
 
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/52dd66cd-cf00-47c9-8fbb-357ea1734dce)
 
+
 ### Otimização dos Hiperparâmetros
+
 
 **Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
 Hiperparâmetros Selecionados para Otimização:
@@ -115,7 +129,9 @@ Hiperparâmetros Selecionados para Otimização:
 
 •	**GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, um método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
 
+
 Após concluir a otimização, o Optuna fornece a configuração de hiperparâmetros que resultou no melhor desempenho, orientando a escolha final dos parâmetros para o modelo. Os dados abaixo mostram o desempenho da estratégia otimizada:
+
 
 |                         |   Strategy |   Benchmark |
 |:------------------------|-----------:|------------:|
