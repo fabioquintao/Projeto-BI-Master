@@ -21,15 +21,21 @@ O termo "Proximal" refere-se à abordagem do algoritmo em manter as novas polít
 
 No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente incerto e volátil. O PPO, ao lidar com este ambiente, aprende uma política que não apenas escolhe a melhor ação com base no estado atual do mercado, mas também considera a incerteza inerente. Isso significa que, mesmo em condições de mercado semelhantes, as ações tomadas pelo agente podem variar, refletindo a natureza estocástica da política aprendida. Em ambientes de trading, onde as condições podem mudar rapidamente, a capacidade de variar ações aumenta a adaptação e potencialmente melhora o desempenho.
 
-*Exploração e Explotação*: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
+**Exploração e Explotação**: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
 
-Tecnicamente, o PPO realiza atualizações de política de uma maneira que equilibra eficientemente a exploração e a explotação, evitando grandes desvios que podem resultar em desempenho instável. Isso é alcançado através de várias características-chave:
+### Componentes Principais do PPO:
 
-1. **Atualização Limitada de Política**: O PPO limita a extensão das atualizações de política usando uma função objetivo clipada. A razão de probabilidade das políticas, `r_t(θ)`, é clipada dentro de um intervalo `[1 - ε, 1 + ε]`, onde `ε` é um hiperparâmetro. Isso assegura que as atualizações da política não se desviem drasticamente da política anterior, promovendo um aprendizado estável.
+Rede de Políticas (Policy Network): Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações.
+
+Rede de Valor (Value Network): Esta rede avalia a qualidade de um estado (ou ação) ao prever a quantidade de recompensa que o agente pode esperar receber a partir daquele estado. Paralelamente à política, o algoritmo treina uma função de valor usando erro médio quadrátco para estimar os retornos futuros.
+
+**Aprendizado Iterativo**: O PPO funciona através de iterações. Em cada iteração, o agente interage com o ambiente, coletando dados sobre suas experiências.
+
+**Atualização de Política**: Com base nos dados coletados, o PPO ajusta os parâmetros da rede de políticas. O objetivo é melhorar a política de ação do agente de forma a maximizar a recompensa esperada. 
+
+**Restrição de Atualização de Política**: O PPO inclui um mecanismo que limita o tamanho das atualizações de política, o que evita mudanças drásticas e potencialmente prejudiciais. Isso é feito calculando a razão entre a nova política e a política antiga e restringindo-a dentro de um intervalo determinado. Tecnicamente, algoritmo limita a extensão essas atualizações usando uma função objetivo clipada. A razão de probabilidade das políticas, `r_t(θ)`, é clipada dentro de um intervalo `[1 - ε, 1 + ε]`, onde `ε` é um hiperparâmetro. Isso assegura que as atualizações da política não se desviem drasticamente da política anterior, promovendo um aprendizado estável.
 
 2. **Estimação de Vantagem Generalizada (GAE)**: O PPO utiliza GAE para calcular a vantagem de uma ação, que ajuda a balancear a variância e o viés nas estimativas de recompensa, onde `δ_t` é o erro de diferença temporal (TD) e `γ` e `λ` são hiperparâmetros.
-
-3. **Função de Valor**: Paralelamente à política, o PPO treina uma função de valor usando erro médio quadrátco para estimar os retornos futuros.
 
 ### As principais etapas do projeto são:
 
