@@ -85,7 +85,7 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 
 - **Sharpe Ratio**: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
 
-- **Uso de Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
+**Uso de Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
 
 - **Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 100 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
 
