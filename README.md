@@ -33,17 +33,17 @@ Rede de Valor (Value Network): Esta rede avalia a qualidade de um estado (ou aç
 
 **Atualização de Política**: Com base nos dados coletados, o PPO ajusta os parâmetros da rede de políticas. O objetivo é melhorar a política de ação do agente de forma a maximizar a recompensa esperada. 
 
-**Restrição de Atualização de Política**: O PPO inclui um mecanismo que limita o tamanho das atualizações de política, o que evita mudanças drásticas e potencialmente prejudiciais. Isso é feito calculando a razão entre a nova política e a política antiga e restringindo-a dentro de um intervalo determinado. Tecnicamente, algoritmo limita a extensão essas atualizações usando uma função objetivo clipada. A razão de probabilidade das políticas, `r_t(θ)`, é clipada dentro de um intervalo `[1 - ε, 1 + ε]`, onde `ε` é um hiperparâmetro. Isso assegura que as atualizações da política não se desviem drasticamente da política anterior, promovendo um aprendizado estável.
+**Restrição de Atualização de Política**: O PPO inclui um mecanismo que limita o tamanho das atualizações de política, o que evita mudanças drásticas e potencialmente prejudiciais. Isso é feito calculando a razão entre a nova política e a política antiga e restringindo-a dentro de um intervalo determinado. Tecnicamente, algoritmo limita a extensão dessas atualizações usando uma função objetivo clipada. A razão de probabilidade das políticas, 'r_t(θ)', é clipada dentro de um intervalo [1 - ε, 1 + ε]`, onde `ε` é um hiperparâmetro. Isso assegura que as atualizações da política não se desviem drasticamente da política anterior, promovendo um aprendizado estável. 'r_t(θ)' é a razão entre a probabilidade de uma ação sob a política atual e a probabilidade da mesma ação sob a política antiga. Se 'r_t(θ)' estiver fora do intervalo '[1 - ε, 1 + ε]', onde 'ε' é um hiperparâmetro pequeno (como 0.1 ou 0.2), a função de perda é "clipada" para reduzir o incentivo para mudar a política nessa direção.
 
-2. **Estimação de Vantagem Generalizada (GAE)**: O PPO utiliza GAE para calcular a vantagem de uma ação, que ajuda a balancear a variância e o viés nas estimativas de recompensa, onde `δ_t` é o erro de diferença temporal (TD) e `γ` e `λ` são hiperparâmetros.
+**Estimação de Vantagem Generalizada (GAE)**: O PPO utiliza GAE para calcular a vantagem de uma ação, que ajuda a balancear a variância e o viés nas estimativas de recompensa, onde `δ_t` é o erro de diferença temporal (TD) e `γ` e `λ` são hiperparâmetros. 'γ' é o fator de desconto, que determina a importância das recompensas futuras. 'λ' é um parâmetro que equilibra a variância e o viés nas estimativas de vantagem. Um valor alto de λ pode aumentar a variância mas reduzir o viés, e vice-versa.
 
-### As principais etapas do projeto são:
+**As principais etapas do projeto são**:
 
 **Preparação dos Dados**: Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia e volume de negociações.
    
 **Estratégia de Trading Personalizada**: Foi definida uma estratégia de trading chamada "Momentum and Volatility", que inclui uma série de indicadores técnicos. Estes indicadores são usados para analisar o mercado e tomar decisões informadas de trading.
 
-***Indicadores Técnicos Utilizados***:
+**Indicadores Técnicos Utilizados**:
 
 **Médias Móveis Simples (SMA) de 50 e 200 dias**: Estas médias são usadas para identificar tendências de longo e curto prazo no mercado. Uma SMA de 50 dias ajuda a entender o momentum de curto prazo, enquanto a SMA de 200 dias é frequentemente usada para identificar a tendência de longo prazo.
 
@@ -60,9 +60,11 @@ A combinação destes indicadores técnicos permite ao modelo aprender a identif
    
 O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark.
  
-Treinamento e Avaliação do Agente: O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida.Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
+### Treinamento e Avaliação do Agente:
+
+O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida.Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
    
-### Métricas de Backtesting: 
+**Métricas de Backtesting**: 
 
 •	**Análise de Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
@@ -103,7 +105,8 @@ O gráfico abaixo mostra os retornos cumulativos da estratégia vs o benchmark:
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/52dd66cd-cf00-47c9-8fbb-357ea1734dce)
 
 ### Otimização dos Hiperparâmetros
-Integração com Optuna: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
+
+**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações de hiperparâmetros e identificar as que oferecem o melhor desempenho.
 Hiperparâmetros Selecionados para Otimização:
 
 •	**Taxa de Aprendizado (learning_rate)**: Determina o tamanho dos ajustes feitos aos pesos da rede neural durante o treinamento. 
