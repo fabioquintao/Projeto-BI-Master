@@ -12,7 +12,7 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 ## Resumo
 
-Este projeto apresenta uma aplicação do Aprendizado por Reforço (Reinforcement Learning) aplicado a trading de criptomoeda. O Aprendizado por Reforço é uma área de estudo no campo de Machine Learning, onde um agente aprende a tomar decisões otimizadas através de interações com um ambiente. Neste paradigma, o agente executa ações e recebe recompensas ou penalidades com base nos resultados dessas ações. O objetivo do agente é maximizar a soma das recompensas ao longo do tempo.
+Este projeto apresenta uma aplicação do Aprendizado por Reforço (Reinforcement Learning) para trading de criptomoeda. O Aprendizado por Reforço é uma área de estudo no campo de Machine Learning, onde um agente aprende a tomar decisões otimizadas através de interações com um ambiente. Neste paradigma, o agente executa ações e recebe recompensas ou penalidades com base nos resultados dessas ações. O objetivo do agente é maximizar a soma das recompensas ao longo do tempo.
 Este projeto foca na aplicação de RL, especificamente utilizando o algoritmo Proximal Policy Optimization (PPO), para desenvolver estratégias de trading. O PPO, implementado através da biblioteca Stable Baselines, foi escolhido por sua eficácia em ambientes de alta incerteza e complexidade, como é o caso dos mercados financeiros.
 
 
