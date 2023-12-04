@@ -62,9 +62,10 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 **Convergência e Divergência de Médias Móveis (MACD)**: Este indicador ajuda a identificar mudanças de tendência no mercado através da comparação entre duas médias móveis de diferentes períodos.
 
 **Média Móvel Simples de Volume (Volume SMA) de 20 dias**: Fornece insights sobre o volume de negociação, que é um importante indicador da força de uma tendência.
+
 A combinação destes indicadores técnicos permite ao modelo aprender a identificar padrões e a tomar decisões de trading mais informadas e baseadas em dados.
 
-**Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
+**Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca Gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
    
 O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark.
 
@@ -78,13 +79,13 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 
 •	**Análise de Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
-•	**Drawdown Máximo**: Mede a maior queda da estratégia, fornecendo uma indicação do risco de perdas significativas.
+•	**Drawdown Máximo**: Mede a a maior queda percentual entre um pico e um vale subsequente no período, fornecendo uma indicação do risco de perdas significativas.
 
 •	**Sharpe Ratio**: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
 
 •	**Uso de Simulações em Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
 
-•	**Realização de 1000 Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 1000 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
+•	**Realização de 1000 Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 100 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
 
 •	**Cálculo da Média das Métricas**: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
 
