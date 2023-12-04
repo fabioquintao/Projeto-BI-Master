@@ -29,7 +29,7 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 ### Componentes Principais do PPO:
 
 
-**Rede de Políticas (Policy Network)**: Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações.
+**Rede de Políticas (Policy Network)**: Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações. Nesse modelo foi utilzada a "MLP Policy", ou Política de Perceptron Multi-Camadas, que se caracteriza por uma rede de múltiplas camadas de neurônios, cada camada conectada à seguinte, permitindo aprender representações complexas dos dados de entrada.
 
 **Rede de Valor (Value Network)**: Esta rede avalia a qualidade de um estado (ou ação) ao prever a quantidade de recompensa que o agente pode esperar receber a partir daquele estado. Paralelamente à política, o algoritmo treina uma função de valor usando erro médio quadrátco para estimar os retornos futuros.
 
