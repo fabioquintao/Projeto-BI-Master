@@ -96,7 +96,7 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 ### Análise dos Resultados:
 
 
-Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a *função backtest_strategy_ensemble*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
+Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a função *backtest_strategy_ensemble*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
 
 - **Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
