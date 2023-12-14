@@ -139,7 +139,7 @@ O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente
 O Optuna oferece uma característica chamada "pruning", que é uma forma de parar prematuramente uma trial que não parece promissora.
 Durante uma trial, se certos critérios intermediários indicam que essa configuração de hiperparâmetros provavelmente não resultará em um bom desempenho, a trial é "podada" (ou seja, interrompida) para economizar recursos. 
 
-- **Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo (neste caso, o retorno médio da estratégia).
+- **Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo, *neste caso a recompensa média (average reward) do modelo*.
 
 - **Treinamento do Modelo Otimizado**: Após a conclusão do processo de otimização, foi usado o *study.best_params* para obter o conjunto de hiperparâmetros que resultou no melhor desempenho. Com esses hiperparâmetros, uma nova instância do modelo foi criada e treinada no mesmo ambiente de aprendizado. Esta instância foi configurada especificamente com os valores otimizados para learning_rate, gamma, e gae_lambda.
 
