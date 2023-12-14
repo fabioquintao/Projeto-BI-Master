@@ -121,7 +121,7 @@ O gráfico abaixo mostra os retornos cumulativos:
 
 ### Otimização dos Hiperparâmetros:
 
-**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho. Foi definida uma função *(optimize_ppo)* que cria uma instância do modelo com um conjunto de hiperparâmetros e avaliava seu desempenho (através da função *evaluate_model*).
+**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho. Foi definida uma função *(optimize_ppo)* que cria uma instância do modelo com um conjunto de hiperparâmetros e avaliava seu desempenho (através da função *evaluate_model*).
 
 Hiperparâmetros Selecionados para Otimização:
 
@@ -133,13 +133,13 @@ Hiperparâmetros Selecionados para Otimização:
 
 **Processo de Otimização**: 
 
-O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele utiliza algoritmos avançados para escolher os hiperparâmetros em cada trial, como o Tree-structured Parzen Estimator (TPE). O TPE modela a relação entre hiperparâmetros e a pontuação da função objetivo. Ele usa essa modelagem para prever quais conjuntos de hiperparâmetros podem resultar em melhor desempenho, focando as futuras trials nessas áreas do espaço de hiperparâmetros. Enquanto o Grid Search explora  de forma exaustiva e o Random Search faz isso de maneira aleatória, o Optuna adota uma abordagem mais inteligente e eficiente, aprendendo com os resultados das tentativas anteriores para direcionar a busca para as regiões mais promissoras, oferecendo um balanço mais eficaz entre exploração e exploração.
+O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele utiliza algoritmos avançados para escolher os hiperparâmetros em cada trial, como o Tree-structured Parzen Estimator (TPE). O TPE modela a relação entre hiperparâmetros e a pontuação da função objetivo. Ele usa essa modelagem para prever quais conjuntos podem resultar em melhor desempenho, focando as futuras trials nessas áreas do espaço de hiperparâmetros. Enquanto o Grid Search explora  de forma exaustiva e o Random Search faz isso de maneira aleatória, o Optuna adota uma abordagem mais inteligente e eficiente, aprendendo com os resultados das tentativas anteriores para direcionar a busca para as regiões mais promissoras, oferecendo um balanço mais eficaz entre exploração e exploração.
 
 - **Pruning (Poda)**:
 O Optuna oferece uma característica chamada "pruning", que é uma forma de parar prematuramente uma trial que não parece promissora.
 Durante uma trial, se certos critérios intermediários indicam que essa configuração de hiperparâmetros provavelmente não resultará em um bom desempenho, a trial é "podada" (ou seja, interrompida) para economizar recursos. 
 
-- **Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo, *neste caso a recompensa média (average reward) do modelo*.
+- **Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo, neste caso *a recompensa média (average reward) do modelo*.
 
 - **Treinamento do Modelo Otimizado**: Após a conclusão do processo de otimização, foi usado o *study.best_params* para obter o conjunto que resultou no melhor desempenho. Com esse conjunto, uma nova instância do modelo foi criada e treinada no mesmo ambiente de aprendizado. Esta instância foi configurada especificamente com os valores otimizados para *learning_rate (0.04135), gamma (0.87516), e gae_lambda (0.87125)*.
 
