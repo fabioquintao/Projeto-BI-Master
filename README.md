@@ -121,7 +121,7 @@ O gráfico abaixo mostra os retornos cumulativos:
 
 ### Otimização dos Hiperparâmetros:
 
-**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho.
+**Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização de hiperparâmetros. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho. Foi definida uma função *(optimize_ppo)* que cria uma instância do modelo com um conjunto de hiperparâmetros e avaliava seu desempenho (através da função *evaluate_model*).
 
 Hiperparâmetros Selecionados para Otimização:
 
@@ -131,8 +131,12 @@ Hiperparâmetros Selecionados para Otimização:
 
 - **GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
 
+**Processo de Otimização**: O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele usa algoritmos como o Tree-structured Parzen Estimator (TPE) para escolher inteligentemente os hiperparâmetros que provavelmente levarão a um melhor desempenho.
 
-Após concluir a otimização, o Optuna fornece a melhor configuração de hiperparâmetros. Os dados abaixo mostram o desempenho da estratégia otimizada:
+**Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo (neste caso, o retorno médio da estratégia).
+
+Treinamento do Modelo Otimizado: Após a conclusão do processo de otimização, foi usado o *study.best_params* para obter o conjunto de hiperparâmetros que resultou no melhor desempenho. Com esses hiperparâmetros, uma nova instância do modelo foi criada e treinada no mesmo ambiente de aprendizado. Esta instância foi configurada especificamente com os valores otimizados para learning_rate, gamma, e gae_lambda.
+
 
 
 |                         |   Strategy |   Benchmark |
