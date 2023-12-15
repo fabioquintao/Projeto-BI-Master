@@ -123,7 +123,7 @@ O gráfico abaixo mostra os retornos cumulativos:
 
 
 
-### OTIMIZAÇÃO DOS HIPERPARAMETROS:
+### OTIMIZAÇÃO DOS HIPERPARÂMETROS:
 
 
 **Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho. Foi definida uma função *(optimize_ppo)* que cria uma instância do modelo com um conjunto de hiperparâmetros e avaliava seu desempenho (através da função *evaluate_model*).
@@ -181,7 +181,7 @@ Abaixo estão os resultados da estratégia otimizada:
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/8cc5756a-29b1-43df-8562-a27ef18e3b65)
 
 
-# Conclusão:
+### CONCLUSÃO:
 
 
 O modelo apresentado demonstra um potencial para desenvolver estratégias de trading adaptativas. O agente apresenta uma capacidade de adaptação em posicões de compra e venda com base nas recompensas que recebe como resultado de suas ações. Esse ajuste dinâmico da posição permite que o agente aprenda com as experiências passadas e ajuste seu nível de exposição ao mercado de acordo com o desempenho atual. A utilização de dados de validação no backtest contribui para mitigar o overfitting, reduzindo a probabilidade de a estratégia ser excessivamente adaptada aos dados de treinamento e, assim, aumentando a confiabilidade para lidar com diferentes cenários de mercado.
