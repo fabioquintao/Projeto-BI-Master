@@ -96,7 +96,7 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 ### Análise dos Resultados:
 
 
-Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a função *backtest_strategy_ensemble*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
+Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a função *backtest_strategy*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
 
 - **Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
@@ -109,14 +109,14 @@ Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. U
          
 |                         |   Strategy |   Benchmark |
 |:------------------------|-----------:|------------:|
-| Total Return (%)        |   -13.7556 |    -18.3247 |
-| Max Drawdown (%)        |    89.9388 |    110.08   |
-| Annualized Sharpe Ratio |    -0.128  |     -0.1585 |
+| Total Return (%)        |    25.1945 |    -21.6774 |
+| Max Drawdown (%)        |   130.223  |    145.391  |
+| Annualized Sharpe Ratio |     0.1576 |     -0.1119 |
 
 
 O gráfico abaixo mostra os retornos cumulativos:
 
-![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/52dd66cd-cf00-47c9-8fbb-357ea1734dce)
+![Uploading image.png…]()
 
 
 ### Otimização dos Hiperparâmetros:
@@ -129,7 +129,13 @@ Hiperparâmetros Selecionados para Otimização:
 
 - **Fator de Desconto (gamma)**: Equilibra a importância das recompensas imediatas versus futuras. 
 
-- **GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, método para reduzir a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
+- **GAE Lambda (gae_lambda)**: Usado no cálculo do Generalized Advantage Estimator, método para equilibrar o viés e a variância dos estimadores de vantagem, melhorando a estabilidade do treinamento.
+  
+- **Entropy Coefficient (entropy_coefficient)**: Ajusta o equilíbrio entre exploração e explotação.
+  
+- **Clip Range (clip_range)**: Controla o limite das mudanças na política de decisão do modelo.
+  
+- **Value Function Coefficient (value_function_coefficient)**: Define a importância da função de valor na função de perda total.
 
 **Processo de Otimização**: 
 
@@ -141,17 +147,32 @@ Durante uma trial, se certos critérios intermediários indicam que essa configu
 
 - **Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo, neste caso *a recompensa média (average reward) do modelo*.
 
-- **Treinamento do Modelo Otimizado**: Após a conclusão do processo de otimização, foi usado o *study.best_params* para obter o conjunto que resultou no melhor desempenho. Com esse conjunto, uma nova instância do modelo foi criada e treinada no mesmo ambiente de aprendizado. Esta instância foi configurada especificamente com os valores otimizados para *learning_rate (0.04135), gamma (0.87516), e gae_lambda (0.87125)*.
+- **Treinamento do Modelo Otimizado**: Após a conclusão do processo de otimização, foi usado o *study.best_params* para obter o conjunto que resultou no melhor desempenho. Com esse conjunto, uma nova instância do modelo foi criada e treinada no mesmo ambiente de aprendizado. Esta instância foi configurada especificamente com os valores otimizados:
+  
 
+|                            |   Value |
+|:---------------------------|--------:|
+| learning_rate              |  0.0324 |
+| gamma                      |  0.9577 |
+| gae_lambda                 |  0.8922 |
+| entropy_coefficient        |  0.0039 |
+| clip_range                 |  0.2618 |
+| value_function_coefficient |  0.9287 |
+
+
+
+Abaixo estão os resultados da estratégia otimizada:
 
 
 |                         |   Strategy |   Benchmark |
 |:------------------------|-----------:|------------:|
-| Total Return (%)        |    -6.0763 |    -18.3247 |
-| Max Drawdown (%)        |    65.023  |    110.08   |
-| Annualized Sharpe Ratio |    -0.0759 |     -0.1585 |
+| Total Return (%)        |    56.8488 |    -21.6774 |
+| Max Drawdown (%)        |   102.075  |    145.391  |
+| Annualized Sharpe Ratio |     0.2891 |     -0.1119 |
 
 
-![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/c4cd2d07-1953-487f-90df-d16587ecd23c)
+![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/8cc5756a-29b1-43df-8562-a27ef18e3b65)
+
+
 
 
