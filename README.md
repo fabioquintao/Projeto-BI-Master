@@ -16,7 +16,7 @@ Este projeto apresenta uma aplicação do Aprendizado por Reforço (Reinforcemen
 Este projeto foca na aplicação de RL, especificamente utilizando o algoritmo Proximal Policy Optimization (PPO), para desenvolver estratégias de trading. O PPO, implementado através da biblioteca Stable Baselines, foi escolhido por sua eficácia em ambientes de alta incerteza e complexidade, como é o caso dos mercados financeiros.
 
 
-###  PROXIMAL POLICY OPTIMIZATION (PPO)
+###  PROXIMAL POLICY OPTIMIZATION (PPO):
 
 
 O termo "Proximal" refere-se à abordagem do algoritmo em manter as novas políticas de decisão próximas às políticas antigas durante o processo de aprendizado. O PPO opera com base em políticas de decisão, que são mapeamentos de estados percebidos do ambiente para ações a serem tomadas. Estas políticas são frequentemente estocásticas, o que significa que, para um dado estado, o algoritmo produz uma distribuição de probabilidade sobre as ações possíveis, em vez de uma única ação determinística. 
