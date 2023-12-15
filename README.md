@@ -67,9 +67,9 @@ Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Fi
 
 A combinação destes indicadores técnicos permite ao modelo aprender a identificar padrões e a tomar decisões de trading mais informadas e baseadas em dados.
 
-**Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca Gym, que reflete o mercado de trading de criptomoedas. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
+**Configuração do Ambiente de Trading**: Foi criado um ambiente simulado baseado na biblioteca Gym, que reflete o mercado de trading. Este ambiente permite ao agente aprender e desenvolver estratégias de maneira controlada e iterativa. O ambiente proporciona uma plataforma para o agente experimentar diferentes estratégias, aprender com as interações e ajustar suas ações com base nos resultados obtidos.
    
-O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. *O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark*.
+O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Essa estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. *O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado, mas que também seja capaz de superar o retorno do benchmark*.
 
  
 ### TREINAMENTO E AVALIAÇÃO DO AGENTE:
@@ -79,27 +79,23 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
    
 **Métricas de Backtesting**: 
 
-- **Retorno Total**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
+- **Total Return**: Avalia o ganho ou perda total gerado pela estratégia ao longo do período de teste.
 
-- **Drawdown Máximo**: Mede a a maior queda percentual entre um pico e um vale subsequente no período, fornecendo uma indicação do risco de perdas significativas.
+- **Maximum Drawdown**: Mede a a maior queda percentual entre um pico e um vale subsequente no período, fornecendo uma indicação do risco de perdas significativas.
 
 - **Sharpe Ratio**: Compara o retorno ajustado ao risco da estratégia, oferecendo uma perspectiva sobre sua eficiência em termos de geração de retorno por unidade de risco.
 
-**Uso de Dados de Validação**: Para assegurar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. As características deste processo incluem:
+**Uso de Dados de Validação**: Para aumentar a robustez e a aplicabilidade da estratégia em diferentes cenários de mercado, o processo de backtesting é realizado em um conjunto de dados de validação. Este conjunto é separado dos dados utilizados durante o treinamento, permitindo uma avaliação imparcial da estratégia. Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
 
 - **Simulações**: Dada a natureza estocástica do algoritmo PPO, são realizadas 100 simulações para capturar a variabilidade nos resultados. Cada simulação pode apresentar trajetórias de trading ligeiramente diferentes, mesmo em condições de mercado semelhantes.
 
 - **Cálculo da Média das Métricas**: A média das métricas de todas as simulações é calculada para avaliar a consistência geral da estratégia.
 
-- **Avaliação da Generalização da Estratégia**: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
 
-
-### ANÁLISE DOS RESULTADOS:
+### ANÁLISE GRÁFICA DOS RESULTADOS:
 
 
 Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a função *backtest_strategy*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
-
-- **Cálculo dos Retornos Cumulativos**: A função calcula os retornos cumulativos da estratégia e do benchmark.
 
 - **Visualização Gráfica**: As séries de retornos cumulativos são plotadas em um gráfico. Esta visualização fornece uma comparação de performance ao longo do tempo.
 
@@ -144,10 +140,10 @@ Hiperparâmetros Selecionados para Otimização:
 
 **Processo de Otimização**: 
 
-O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele utiliza algoritmos avançados para escolher os hiperparâmetros em cada trial, como o Tree-structured Parzen Estimator (TPE). O TPE modela a relação entre hiperparâmetros e a pontuação da função objetivo. Ele usa essa modelagem para prever quais conjuntos podem resultar em melhor desempenho, focando as futuras trials nessas áreas do espaço de hiperparâmetros. Enquanto o Grid Search explora  de forma exaustiva e o Random Search faz isso de maneira aleatória, o Optuna adota uma abordagem mais inteligente e eficiente, aprendendo com os resultados das tentativas anteriores para direcionar a busca para as regiões mais promissoras, oferecendo um balanço mais eficaz.
+O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele utiliza algoritmos avançados para escolher os hiperparâmetros em cada trial, como o Tree-structured Parzen Estimator (TPE). O TPE modela a relação entre hiperparâmetros e a pontuação da função objetivo. Ele usa essa modelagem para prever quais conjuntos podem resultar em melhor desempenho, focando as futuras trials nessas áreas do espaço de hiperparâmetros. Enquanto o Grid Search explora de forma exaustiva e o Random Search faz isso de maneira aleatória, o Optuna adota uma abordagem mais inteligente e eficiente, aprendendo com os resultados das tentativas anteriores para direcionar a busca para as regiões mais promissoras, oferecendo um balanço mais eficaz.
 
 - **Pruning (Poda)**:
-O Optuna oferece uma característica chamada "pruning", que é uma forma de parar prematuramente uma trial que não parece promissora.
+O Optuna possui uma característica chamada "pruning", que é uma forma de parar prematuramente uma trial que não parece promissora.
 Durante uma trial, se certos critérios intermediários indicam que essa configuração de hiperparâmetros provavelmente não resultará em um bom desempenho, a trial é "podada" (ou seja, interrompida) para economizar recursos. 
 
 - **Seleção dos Melhores Hiperparâmetros**: Após várias tentativas, o Optuna identifica os hiperparâmetros que maximizam a função objetivo, neste caso *o sharpe ratio da estratégia*.
@@ -167,7 +163,7 @@ Durante uma trial, se certos critérios intermediários indicam que essa configu
 
 
 
-Abaixo estão os resultados da estratégia otimizada:
+Abaixo estão os resultados da estratégia otimizada versus o benchmark:
 
 
 
