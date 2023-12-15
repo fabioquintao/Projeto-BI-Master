@@ -177,5 +177,12 @@ Abaixo estão os resultados da estratégia otimizada:
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/8cc5756a-29b1-43df-8562-a27ef18e3b65)
 
 
+**CONCLUSÃO:
+
+
+O modelo apresentado demonstra um potencial para desenvolver estratégias de trading adaptativas. O agente apresenta uma capacidade de adaptação em posicões de compra e venda com base nas recompensas que recebe como resultado de suas ações. Esse ajuste dinâmico da posição permite que o agente aprenda com as experiências passadas e ajuste seu nível de exposição ao mercado de acordo com o desempenho atual. A utilização de dados de validação no backtest contribui para mitigar o overfitting, reduzindo a probabilidade de a estratégia ser excessivamente adaptada aos dados de treinamento e, assim, aumentando a confiabilidade para lidar com diferentes cenários de mercado.
+
+Embora o ambiente de simulação seja valioso para o treinamento inicial, os mercados de criptomoedas são altamente voláteis, o que desafia a capacidade do modelo de se adaptar rapidamente a mudanças inesperadas nas condições de mercado. Além disso, a aplicação do modelo no mundo real enfrenta desafios adicionais, como custos de transação, latência e questões de execução de ordens. A implementação bem-sucedida de uma estratégia de posicionamento dinâmico requer uma abordagem cuidadosa para equilibrar a busca por oportunidades de lucro com a gestão adequada de riscos e custos, além da capacidade de responder de forma eficaz a todas essas variáveis complexas e imprevisíveis no mundo real do trading.
+
 
 
