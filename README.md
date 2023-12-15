@@ -10,13 +10,13 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 - [Link para o código](https://github.com/fabioquintao/Projeto-BI-Master/blob/main/RL_for%20_trading.ipynb)
 
-## Resumo
+## RESUMO
 
 Este projeto apresenta uma aplicação do Aprendizado por Reforço (Reinforcement Learning) para trading de criptomoeda. O Aprendizado por Reforço é uma área de estudo no campo de Machine Learning, onde um agente aprende a tomar decisões otimizadas através de interações com um ambiente. Neste paradigma, o agente executa ações e recebe recompensas ou penalidades com base nos resultados dessas ações. O objetivo do agente é maximizar a soma das recompensas ao longo do tempo.
 Este projeto foca na aplicação de RL, especificamente utilizando o algoritmo Proximal Policy Optimization (PPO), para desenvolver estratégias de trading. O PPO, implementado através da biblioteca Stable Baselines, foi escolhido por sua eficácia em ambientes de alta incerteza e complexidade, como é o caso dos mercados financeiros.
 
 
-###  Proximal Policy Optimization (PPO)
+###  PROXIMAL POLICY OPTIMIZATION (PPO)
 
 
 O termo "Proximal" refere-se à abordagem do algoritmo em manter as novas políticas de decisão próximas às políticas antigas durante o processo de aprendizado. O PPO opera com base em políticas de decisão, que são mapeamentos de estados percebidos do ambiente para ações a serem tomadas. Estas políticas são frequentemente estocásticas, o que significa que, para um dado estado, o algoritmo produz uma distribuição de probabilidade sobre as ações possíveis, em vez de uma única ação determinística. 
@@ -26,7 +26,7 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 **Exploração e Explotação**: Em Aprendizado por Reforço, um aspecto crucial é equilibrar a exploração (experimentar novas ações para descobrir suas recompensas) e a explotação (usar o conhecimento adquirido para tomar as melhores ações). A abordagem estocástica do PPO ajuda a manter este equilíbrio, permitindo que o modelo explore diferentes ações de forma probabilística.
 
 
-### Componentes Principais do PPO:
+### COMPONENTES PRINCIPAIS DO PPO:
 
 
 **Rede de Políticas (Policy Network)**: Esta rede é responsável por tomar decisões. Ela mapeia estados do ambiente para ações, determinando como o agente deve se comportar em determinadas situações. Nesse modelo foi utilzada a "MLP Policy", ou Política de Perceptron Multi-Camadas, que se caracteriza por uma rede de múltiplas camadas de neurônios, cada camada conectada à seguinte, permitindo aprender representações complexas dos dados de entrada.
@@ -45,7 +45,7 @@ No trading de criptomoedas, por exemplo, o ambiente de mercado é altamente ince
 **As principais etapas do projeto são**:
 
 
-### Preparação dos Dados:
+### PREPARAÇÃO DOS DADOS:
 
 Foram utilizados dados históricos do Bitcoin, disponíveis através do Yahoo Finance, abrangendo um período de 84 meses. Estes dados são usados para criar um ambiente de treinamento realista para o agente de RL. Os dados históricos incluem preço de abertura, preço de fechamento, alta e baixa do dia e volume de negociações.
    
@@ -72,7 +72,8 @@ A combinação destes indicadores técnicos permite ao modelo aprender a identif
 O benchmark escolhido para este projeto é a estratégia de Buy-and-Hold. Esta estratégia consiste basicamente em comprar ativos e mantê-los por um longo período, independentemente das flutuações do mercado. *O objetivo principal é permitir que o agente de RL desenvolva uma estratégia que não apenas aprenda a navegar pela volatilidade do mercado de criptomoedas, mas que também seja capaz de superar o retorno do benchmark*.
 
  
-### Treinamento e Avaliação do Agente:
+### TREINAMENTO E AVALIAÇÃO DO AGENTE:
+
 
 O agente é treinado com base nos dados históricos do Bitcoin e avaliado através de métricas de backtesting, com o objetivo de testar a eficácia e a validade da estratégia desenvolvida. Este treinamento envolve o ajuste iterativo das políticas de decisão do agente com o objetivo de maximizar as recompensas.
    
@@ -93,7 +94,7 @@ O agente é treinado com base nos dados históricos do Bitcoin e avaliado atrav�
 - **Avaliação da Generalização da Estratégia**: Utilizar dados de validação ajuda a confirmar se a estratégia desenvolvida é generalizável e eficaz fora do conjunto de dados de treinamento. Isso é crucial para garantir que a estratégia não esteja superajustada (overfitting) aos dados de treinamento e possa se adaptar a novos dados e condições de mercado.
 
 
-### Análise dos Resultados:
+### ANÁLISE DOS RESULTADOS:
 
 
 Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. Utilizando a função *backtest_strategy*, a estratégia de trading é testada utilizando a média dos resultados de 100 simulações. 
@@ -106,6 +107,7 @@ Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. U
 
  A tabela abaixo mostra os resultados:
 
+
          
 |                         |   Strategy |   Benchmark |
 |:------------------------|-----------:|------------:|
@@ -116,11 +118,13 @@ Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. U
 
 O gráfico abaixo mostra os retornos cumulativos:
 
+
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/5b3970e7-8d4c-4547-929a-dc5eff5a6daf)
 
 
 
-### Otimização dos Hiperparâmetros:
+### OTIMIZAÇÃO DOS HIPERPARAMETROS:
+
 
 **Integração com Optuna**: O código integra o modelo com o Optuna para realizar a otimização. Optuna automatiza o processo de experimentar diferentes combinações e identificar as que oferecem o melhor desempenho. Foi definida uma função *(optimize_ppo)* que cria uma instância do modelo com um conjunto de hiperparâmetros e avaliava seu desempenho (através da função *evaluate_model*).
 
@@ -140,7 +144,7 @@ Hiperparâmetros Selecionados para Otimização:
 
 **Processo de Otimização**: 
 
-O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele utiliza algoritmos avançados para escolher os hiperparâmetros em cada trial, como o Tree-structured Parzen Estimator (TPE). O TPE modela a relação entre hiperparâmetros e a pontuação da função objetivo. Ele usa essa modelagem para prever quais conjuntos podem resultar em melhor desempenho, focando as futuras trials nessas áreas do espaço de hiperparâmetros. Enquanto o Grid Search explora  de forma exaustiva e o Random Search faz isso de maneira aleatória, o Optuna adota uma abordagem mais inteligente e eficiente, aprendendo com os resultados das tentativas anteriores para direcionar a busca para as regiões mais promissoras, oferecendo um balanço mais eficaz entre exploração e exploração.
+O Optuna realiza várias tentativas (trials), cada uma com um conjunto diferente de hiperparâmetros. Ele utiliza algoritmos avançados para escolher os hiperparâmetros em cada trial, como o Tree-structured Parzen Estimator (TPE). O TPE modela a relação entre hiperparâmetros e a pontuação da função objetivo. Ele usa essa modelagem para prever quais conjuntos podem resultar em melhor desempenho, focando as futuras trials nessas áreas do espaço de hiperparâmetros. Enquanto o Grid Search explora  de forma exaustiva e o Random Search faz isso de maneira aleatória, o Optuna adota uma abordagem mais inteligente e eficiente, aprendendo com os resultados das tentativas anteriores para direcionar a busca para as regiões mais promissoras, oferecendo um balanço mais eficaz.
 
 - **Pruning (Poda)**:
 O Optuna oferece uma característica chamada "pruning", que é uma forma de parar prematuramente uma trial que não parece promissora.
@@ -177,7 +181,7 @@ Abaixo estão os resultados da estratégia otimizada:
 ![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/8cc5756a-29b1-43df-8562-a27ef18e3b65)
 
 
-**CONCLUSÃO:
+# Conclusão:
 
 
 O modelo apresentado demonstra um potencial para desenvolver estratégias de trading adaptativas. O agente apresenta uma capacidade de adaptação em posicões de compra e venda com base nas recompensas que recebe como resultado de suas ações. Esse ajuste dinâmico da posição permite que o agente aprenda com as experiências passadas e ajuste seu nível de exposição ao mercado de acordo com o desempenho atual. A utilização de dados de validação no backtest contribui para mitigar o overfitting, reduzindo a probabilidade de a estratégia ser excessivamente adaptada aos dados de treinamento e, assim, aumentando a confiabilidade para lidar com diferentes cenários de mercado.
