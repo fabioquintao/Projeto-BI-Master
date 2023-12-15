@@ -116,7 +116,8 @@ Foi realizada uma comparacão do desempenho da estratégia contra o benchmark. U
 
 O gráfico abaixo mostra os retornos cumulativos:
 
-![Uploading image.png…]()
+![image](https://github.com/fabioquintao/Projeto-BI-Master/assets/76189229/5b3970e7-8d4c-4547-929a-dc5eff5a6daf)
+
 
 
 ### Otimização dos Hiperparâmetros:
@@ -149,6 +150,7 @@ Durante uma trial, se certos critérios intermediários indicam que essa configu
 
 - **Treinamento do Modelo Otimizado**: Após a conclusão do processo de otimização, foi usado o *study.best_params* para obter o conjunto que resultou no melhor desempenho. Com esse conjunto, uma nova instância do modelo foi criada e treinada no mesmo ambiente de aprendizado. Esta instância foi configurada especificamente com os valores otimizados:
   
+  
 
 |                            |   Value |
 |:---------------------------|--------:|
@@ -162,6 +164,7 @@ Durante uma trial, se certos critérios intermediários indicam que essa configu
 
 
 Abaixo estão os resultados da estratégia otimizada:
+
 
 
 |                         |   Strategy |   Benchmark |
